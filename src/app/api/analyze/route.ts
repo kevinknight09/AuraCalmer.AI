@@ -2,17 +2,27 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateObject } from "ai";
 import { z } from "zod";
 
+export const runtime = "edge";
+
 const google = createGoogleGenerativeAI({
   apiKey: process.env.GEMINI_API_KEY || "",
 });
 
+const AnalyzeRequestSchema = z.object({
+  text: z.string().min(1, "Journal text is required"),
+  mood: z.string().nullable().optional(),
+});
+
 export async function POST(req: Request) {
   try {
-    const { text, mood } = await req.json();
+    const json = await req.json();
+    const parsed = AnalyzeRequestSchema.safeParse(json);
 
-    if (!text) {
-      return new Response("Missing journal text", { status: 400 });
+    if (!parsed.success) {
+      return new Response("Invalid request format", { status: 400 });
     }
+
+    const { text, mood } = parsed.data;
 
     const { object } = await generateObject({
       model: google("gemini-2.5-flash"),

@@ -20,9 +20,14 @@ export default function Home() {
           Find your center with <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">AuraCalmer.AI</span>
         </h1>
         
-        <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+        <p className="text-xl text-slate-400 mb-6 max-w-2xl mx-auto">
           Your intelligent digital companion for academic stress. Log your thoughts, chat with an empathetic AI, and uncover emotional insights.
         </p>
+
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-medium mb-10">
+          <Sparkles className="w-4 h-4" />
+          <span>Keep all your test worries behind</span>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 

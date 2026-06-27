@@ -6,6 +6,10 @@ vi.mock('next/navigation', () => ({
   usePathname: () => '/',
 }));
 
+vi.mock('@/components/AuthProvider', () => ({
+  useAuth: () => ({ user: { email: 'test@example.com' }, isLoading: false })
+}));
+
 describe('Sidebar Component', () => {
   it('renders navigation links correctly with aria-labels', () => {
     render(<Sidebar />);

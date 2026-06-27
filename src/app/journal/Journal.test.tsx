@@ -10,6 +10,21 @@ vi.mock('framer-motion', () => ({
   AnimatePresence: ({ children }: any) => <>{children}</>,
 }));
 
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    from: vi.fn(() => ({
+      insert: vi.fn().mockResolvedValue({ error: null })
+    })),
+    auth: {
+      getUser: vi.fn().mockResolvedValue({ data: { user: { id: '123' } } })
+    }
+  }
+}));
+
+vi.mock('@/components/AuthProvider', () => ({
+  useAuth: () => ({ user: { id: '123' }, isLoading: false })
+}));
+
 describe('JournalPage Component', () => {
   it('renders the mood selector and journal textarea with accessibility labels', () => {
     render(<JournalPage />);
