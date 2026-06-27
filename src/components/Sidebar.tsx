@@ -27,13 +27,15 @@ export function Sidebar() {
         </Link>
       </div>
 
-      <nav className="flex-1 px-4 space-y-2 mt-4">
+      <nav aria-label="Main Navigation" className="flex-1 px-4 space-y-2 mt-4">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
+              aria-current={isActive ? "page" : undefined}
+              aria-label={item.name}
               className={cn(
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all relative group",
                 isActive ? "text-indigo-400" : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
@@ -46,7 +48,7 @@ export function Sidebar() {
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
-              <item.icon className="w-4 h-4 relative z-10" />
+              <item.icon className="w-4 h-4 relative z-10" aria-hidden="true" />
               <span className="relative z-10">{item.name}</span>
             </Link>
           );
@@ -54,8 +56,8 @@ export function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-slate-800">
-        <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 w-full transition-colors">
-          <Settings className="w-4 h-4" />
+        <button aria-label="Settings" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 w-full transition-colors">
+          <Settings className="w-4 h-4" aria-hidden="true" />
           <span>Settings</span>
         </button>
       </div>

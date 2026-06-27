@@ -67,12 +67,14 @@ export default function JournalPage() {
         <div className="flex flex-col gap-6">
           <div>
             <label className="text-sm font-medium text-slate-400 mb-3 block">How are you feeling right now?</label>
-            <div className="flex gap-3">
+            <div className="flex gap-3" role="group" aria-label="Mood selector">
               {moods.map((mood) => {
                 const isSelected = selectedMood === mood.label;
                 return (
                   <button
                     key={mood.label}
+                    aria-label={`Select mood ${mood.label}`}
+                    aria-pressed={isSelected}
                     onClick={() => setSelectedMood(mood.label)}
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300",
@@ -81,7 +83,7 @@ export default function JournalPage() {
                         : "border-slate-800 text-slate-400 hover:border-slate-700 hover:bg-slate-800/50"
                     )}
                   >
-                    <mood.icon className="w-4 h-4" />
+                    <mood.icon className="w-4 h-4" aria-hidden="true" />
                     <span className="text-sm font-medium">{mood.label}</span>
                   </button>
                 );
@@ -90,6 +92,7 @@ export default function JournalPage() {
           </div>
 
           <textarea
+            aria-label="Journal Entry"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="What's on your mind? Don't hold back..."

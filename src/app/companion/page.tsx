@@ -124,8 +124,9 @@ export default function CompanionPage() {
         </div>
 
         <div className="p-4 bg-slate-900 border-t border-slate-800">
-          <form onSubmit={handleSubmit} className="flex gap-3 relative">
+          <form onSubmit={handleSubmit} className="flex gap-3 relative" aria-label="Chat Form">
             <input
+              aria-label="Chat Input"
               value={input}
               onChange={handleInputChange}
               placeholder="Type your message..."
@@ -133,11 +134,12 @@ export default function CompanionPage() {
               disabled={isLoading}
             />
             <button
+              aria-label="Send Message"
               type="submit"
               disabled={isLoading || !input.trim()}
               className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:hover:bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shrink-0 transition-colors"
             >
-              <Send className="w-5 h-5 ml-1" />
+              <Send className="w-5 h-5 ml-1" aria-hidden="true" />
             </button>
           </form>
         </div>
