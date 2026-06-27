@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     }
 
     const { object } = await generateObject({
-      model: google("gemini-1.5-pro-latest"),
+      model: google("gemini-2.5-flash"),
       system: `You are an empathetic, expert psychological assistant analyzing a student's journal entry. 
 Your goal is to extract key emotional insights and identify any specific stress triggers mentioned.
 The user has also provided a self-reported mood: ${mood || "Not specified"}.

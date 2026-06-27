@@ -14,7 +14,7 @@ Your tone should be warm, non-judgmental, and constructive. Keep your answers re
 Offer small actionable advice when appropriate, but mostly listen and validate their feelings.`;
 
     const result = streamText({
-      model: google("gemini-1.5-pro-latest"),
+      model: google("gemini-2.5-flash"),
       system: systemPrompt,
       messages: messages as any,
     });
