@@ -16,11 +16,11 @@ export default function Home() {
           <Sparkles className="w-10 h-10 text-indigo-400" />
         </div>
         
-        <h1 className="text-5xl font-extrabold tracking-tight text-slate-100 mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-100 mb-6 leading-tight">
           Find your center with <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">AuraCalmer.AI</span>
         </h1>
         
-        <p className="text-xl text-slate-400 mb-6 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-slate-400 mb-6 max-w-2xl mx-auto">
           Your intelligent digital companion for academic stress. Log your thoughts, chat with an empathetic AI, and uncover emotional insights.
         </p>
 
